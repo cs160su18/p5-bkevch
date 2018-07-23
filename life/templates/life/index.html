@@ -4,7 +4,7 @@
 
 <html>
 	<head>
-		<title></title>
+		<title>Task History</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="{% static '/life/vendors/bootstrap/css/bootstrap.css' %}" />
@@ -13,8 +13,53 @@
 		<script src="{% static '/life/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
 		<script src="{% static '/life/vendors/jquery-ui/jquery-ui.min.js' %}"></script>
 	</head>
-	<body>
-		<!-- Your layout here -->
-
+	<body style="text-align:center">
+    
+    <div class="jumbotron jumbotron-fluid text-center" id="dateinfo">
+      <h1 class="display-4 text-center" id="topday">
+        My Day
+      </h1>
+      {% for tag in tags %}
+          <p class="tagheader">
+            <strong>Day: </strong>
+            {{tag.day}}
+          </p>
+          <p class="tagheader">
+           <strong>Stress: </strong>
+            {{tag.stress_rating}}
+         </p>
+         <p class="tagheader">
+          <strong>Productivity: </strong>
+           {{tag.productivity_rating}}
+         </p>
+         <p class="tagheader">
+          <strong>Enjoyment: </strong>
+           {{tag.enjoyment_rating}}
+         </p>
+          <p class="tagheader">
+            <strong>I accomplished: </strong>
+            {{tag.description}}</p>
+       <br/>
+        {% endfor %}      
+    </div>
+    <div class="jumbotron jumbotron-fluid text-center" id ="H">
+        <div class="container">
+          <h1 class="H">Task History</h1>
+      </div>
+    </div>
+    <div class="container">
+    <div id ="tasks">
+      {% for task in tasks %}
+        <div class="row">
+          <p><strong>{{ task.name }}</strong></p>
+          <p>Start: {{ task.start }}</p>
+          <p>End: {{ task.end }}</p>
+      <br/>
+        </div>
+      {% endfor %}
+     
+      
+      
+    
 	</body>
 </html>
